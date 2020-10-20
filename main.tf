@@ -149,16 +149,18 @@ provider "tencentcloud" {
   region = "ap-shanghai"
 }
 
-data "tencentcloud_images" "default" {
- image_type = ["PUBLIC_IMAGE"]
- os_name = "centos"
-}
+// data "tencentcloud_images" "default" {
+//  image_type = ["PUBLIC_IMAGE"]
+//  os_name = "centos"
+// }
 
 data "tencentcloud_availability_zones" "default" {}
 
 resource "tencentcloud_instance" "instance-poc" {
- availability_zone = data.tencentcloud_availability_zones.default.zones.0.name
- image_id = data.tencentcloud_images.default.images.0.image_id
+//  availability_zone = data.tencentcloud_availability_zones.default.zones.0.name
+availability_zone = "ap-shanghai-2"
+//  image_id = data.tencentcloud_images.default.images.0.image_id
+ image_id = "img-pi0ii46r"
  instance_type = "SA2.SMALL1"
  security_groups            = ["sg-awbhdtwi"]
  system_disk_type           = "CLOUD_PREMIUM"
