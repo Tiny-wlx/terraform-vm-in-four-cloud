@@ -158,7 +158,7 @@ data "tencentcloud_availability_zones" "default" {}
 
 resource "tencentcloud_instance" "instance-poc" {
 //  availability_zone = data.tencentcloud_availability_zones.default.zones.0.name
-availability_zone = "ap-shanghai-2"
+ availability_zone = "ap-shanghai-2"
 //  image_id = data.tencentcloud_images.default.images.0.image_id
  image_id = "img-pi0ii46r"
  instance_type = "SA2.SMALL1"
