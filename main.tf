@@ -113,59 +113,59 @@ resource "aws_instance" "ec2-poc" {
 //}
 
 # huawei
-provider "huaweicloud" {
-  region = "cn-east-2"
-}
-
-// data "huaweicloud_images_image_v2" "default" {
-//  name        = "Ubuntu 18.04 server 64bit"
-//  visibility  = "public"
-//  most_recent = true
+// provider "huaweicloud" {
+//   region = "cn-east-2"
 // }
 
-// resource "huaweicloud_networking_port_v2" "port" {
-//  network_id = "4c50ca74-0a8a-495b-b7d5-4c59d26a2f59"
-//  fixed_ip {
-//    subnet_id = "b83877ff-d64f-443c-b983-9aed0dff4ba2" # subnet-gdsdev
-//    ip_address = "10.203.0.191"
+// // data "huaweicloud_images_image_v2" "default" {
+// //  name        = "Ubuntu 18.04 server 64bit"
+// //  visibility  = "public"
+// //  most_recent = true
+// // }
+
+// // resource "huaweicloud_networking_port_v2" "port" {
+// //  network_id = "4c50ca74-0a8a-495b-b7d5-4c59d26a2f59"
+// //  fixed_ip {
+// //    subnet_id = "b83877ff-d64f-443c-b983-9aed0dff4ba2" # subnet-gdsdev
+// //    ip_address = "10.203.0.191"
+// //  }
+// // }
+
+// resource "huaweicloud_compute_instance_v2" "instance-poc" {
+//  availability_zone = "cn-east-2a"
+//  name = "instance-poc"
+// //  image_id = data.huaweicloud_images_image_v2.default.id
+//  image_id = "ff61492a-64fd-4783-bfc6-b7db0543ce70"
+//  flavor_name = "s3.small.1"
+//  network {
+//   //  port = huaweicloud_networking_port_v2.port.id
+//   uuid = "b83877ff-d64f-443c-b983-9aed0dff4ba2"
 //  }
+//  security_groups   = ["sg-ce93"]
 // }
 
-resource "huaweicloud_compute_instance_v2" "instance-poc" {
- availability_zone = "cn-east-2a"
- name = "instance-poc"
-//  image_id = data.huaweicloud_images_image_v2.default.id
- image_id = "ff61492a-64fd-4783-bfc6-b7db0543ce70"
- flavor_name = "s3.small.1"
- network {
-  //  port = huaweicloud_networking_port_v2.port.id
-  uuid = "b83877ff-d64f-443c-b983-9aed0dff4ba2"
- }
- security_groups   = ["sg-ce93"]
-}
-
-# tencent
-provider "tencentcloud" {
-  region = "ap-shanghai"
-}
-
-// data "tencentcloud_images" "default" {
-//  image_type = ["PUBLIC_IMAGE"]
-//  os_name = "centos"
+// # tencent
+// provider "tencentcloud" {
+//   region = "ap-shanghai"
 // }
 
-data "tencentcloud_availability_zones" "default" {}
+// // data "tencentcloud_images" "default" {
+// //  image_type = ["PUBLIC_IMAGE"]
+// //  os_name = "centos"
+// // }
 
-resource "tencentcloud_instance" "instance-poc" {
-//  availability_zone = data.tencentcloud_availability_zones.default.zones.0.name
- availability_zone = "ap-shanghai-2"
-//  image_id = data.tencentcloud_images.default.images.0.image_id
- image_id = "img-pi0ii46r"
- instance_type = "SA2.SMALL1"
- security_groups            = ["sg-awbhdtwi"]
- system_disk_type           = "CLOUD_PREMIUM"
- system_disk_size           = 50
- vpc_id                     = "vpc-gjkfx3fq"
- subnet_id                  = "subnet-qit2cxof"
- private_ip                 = "10.202.1.191"
-}
+// data "tencentcloud_availability_zones" "default" {}
+
+// resource "tencentcloud_instance" "instance-poc" {
+// //  availability_zone = data.tencentcloud_availability_zones.default.zones.0.name
+//  availability_zone = "ap-shanghai-2"
+// //  image_id = data.tencentcloud_images.default.images.0.image_id
+//  image_id = "img-pi0ii46r"
+//  instance_type = "SA2.SMALL1"
+//  security_groups            = ["sg-awbhdtwi"]
+//  system_disk_type           = "CLOUD_PREMIUM"
+//  system_disk_size           = 50
+//  vpc_id                     = "vpc-gjkfx3fq"
+//  subnet_id                  = "subnet-qit2cxof"
+//  private_ip                 = "10.202.1.191"
+// }
