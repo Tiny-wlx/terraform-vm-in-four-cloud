@@ -1,5 +1,7 @@
 # alicloud
-provider "alicloud" {}
+provider "alicloud" {
+  region = "cn-shanghai"
+}
 
 resource "alicloud_instance" "ecs-poc" {
  image_id = "m-uf68h4rkl1g4f3ztdqyp"
@@ -11,7 +13,9 @@ resource "alicloud_instance" "ecs-poc" {
 
 
 # aws
-provider "aws" {}
+provider "aws" {
+  region = "cn-north-1"
+}
 
 resource "aws_instance" "ec2-poc" {
  ami = "ami-0aec3e46a106ca42d"
@@ -109,7 +113,9 @@ resource "aws_instance" "ec2-poc" {
 //}
 
 # huawei
-provider "huaweicloud" {}
+provider "huaweicloud" {
+  region = "cn-east-2"
+}
 
 data "huaweicloud_images_image_v2" "default" {
  name        = "Ubuntu 18.04 server 64bit"
@@ -137,7 +143,9 @@ resource "huaweicloud_compute_instance_v2" "instance-poc" {
 }
 
 # tencent
-provider "tencentcloud" {}
+provider "tencentcloud" {
+  region = "ap-shanghai"
+}
 
 data "tencentcloud_images" "default" {
  image_type = ["PUBLIC_IMAGE"]
