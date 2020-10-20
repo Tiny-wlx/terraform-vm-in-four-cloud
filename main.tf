@@ -117,27 +117,29 @@ provider "huaweicloud" {
   region = "cn-east-2"
 }
 
-data "huaweicloud_images_image_v2" "default" {
- name        = "Ubuntu 18.04 server 64bit"
- visibility  = "public"
- most_recent = true
-}
+// data "huaweicloud_images_image_v2" "default" {
+//  name        = "Ubuntu 18.04 server 64bit"
+//  visibility  = "public"
+//  most_recent = true
+// }
 
-resource "huaweicloud_networking_port_v2" "port" {
- network_id = "4c50ca74-0a8a-495b-b7d5-4c59d26a2f59"
- fixed_ip {
-   subnet_id = "b83877ff-d64f-443c-b983-9aed0dff4ba2" # subnet-gdsdev
-   ip_address = "10.203.0.191"
- }
-}
+// resource "huaweicloud_networking_port_v2" "port" {
+//  network_id = "4c50ca74-0a8a-495b-b7d5-4c59d26a2f59"
+//  fixed_ip {
+//    subnet_id = "b83877ff-d64f-443c-b983-9aed0dff4ba2" # subnet-gdsdev
+//    ip_address = "10.203.0.191"
+//  }
+// }
 
 resource "huaweicloud_compute_instance_v2" "instance-poc" {
  availability_zone = "cn-east-2a"
  name = "instance-poc"
- image_id = data.huaweicloud_images_image_v2.default.id
+//  image_id = data.huaweicloud_images_image_v2.default.id
+ image_id = "ff61492a-64fd-4783-bfc6-b7db0543ce70"
  flavor_name = "s3.small.1"
  network {
-   port = huaweicloud_networking_port_v2.port.id
+  //  port = huaweicloud_networking_port_v2.port.id
+  uuid = "b83877ff-d64f-443c-b983-9aed0dff4ba2"
  }
  security_groups   = ["sg-ce93"]
 }
@@ -164,25 +166,4 @@ resource "tencentcloud_instance" "instance-poc" {
  vpc_id                     = "vpc-gjkfx3fq"
  subnet_id                  = "subnet-qit2cxof"
  private_ip                 = "10.202.1.191"
-}
-
-variable "vpc_name" {
-  default = "huaweicloud_vpc"
-}
-
-variable "vpc_cidr" {
-  default = "192.168.0.0/16"
-}
-
-resource "huaweicloud_vpc_v1" "vpc_v1" {
-  name = var.vpc_name
-  cidr = var.vpc_cidr
-}
-
-
-resource "huaweicloud_vpc_subnet_v1" "subnet_v1" {
-  name = "test"
-  cidr = "192.168.0.0/24"
-  gateway_ip = "192.168.0.1"
-  vpc_id = huaweicloud_vpc_v1.vpc_v1.id
 }
