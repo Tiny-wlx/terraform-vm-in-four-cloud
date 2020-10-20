@@ -113,9 +113,9 @@ resource "aws_instance" "ec2-poc" {
 //}
 
 # huawei
-// provider "huaweicloud" {
-//   region = "cn-east-2"
-// }
+provider "huaweicloud" {
+  region = "cn-east-2"
+}
 
 // // data "huaweicloud_images_image_v2" "default" {
 // //  name        = "Ubuntu 18.04 server 64bit"
@@ -145,9 +145,9 @@ resource "aws_instance" "ec2-poc" {
 // }
 
 // # tencent
-// provider "tencentcloud" {
-//   region = "ap-shanghai"
-// }
+provider "tencentcloud" {
+  region = "ap-shanghai"
+}
 
 // // data "tencentcloud_images" "default" {
 // //  image_type = ["PUBLIC_IMAGE"]
